@@ -3,6 +3,8 @@ from tkinter import filedialog
 from PIL import Image, ImageTk, ImageDraw, ImageFont
 
 img = None
+window_size = (800,600)
+img_size = (300,300)
 
 def load_image():
 	global img
@@ -13,12 +15,23 @@ def load_image():
 
 
 def display_image(img):
-	img_tk = ImageTk.PhotoImage(img)
-	img_label.config(image=img_tk)
-	img_label.image = img_tk
+    # Resize the image to the desired dimensions
+    img = img.resize(img_size, Image.Resampling.LANCZOS)
+
+    img_tk = ImageTk.PhotoImage(img)
+
+    img_label.config(image=img_tk)
+    img_label.image = img_tk  # Keep a reference to avoid garbage collection
+
+    x = (window_size[0] - img_size[0]) // 2
+    y = (window_size[1] - img_size[1]) // 2
+
+    img_label.place(x=x, y=y, width=img_size[0], height=img_size[1])
+	
 
 def crop_image():
 	global img
+	global img_size
 	if img:
 		img = img.crop((100, 100, 400, 400))
 		display_image(img)
