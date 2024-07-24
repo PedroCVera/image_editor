@@ -70,24 +70,21 @@ def crop_top():
 
 
 def crop_image():
-	crop_menu = Tk()
-	crop_menu.title("Crop Editor")
-	crop_menu.geometry("250x250")
 
-	crop_button_frame = Frame(crop_menu)
+	crop_button_frame = Frame(root)
 	crop_button_frame.pack(side=LEFT, fill=Y)
 
 	crop_top_button = Button(crop_button_frame, text="crop top v", command=crop_left)
-	crop_top_button.pack(side=TOP)
+	crop_top_button.pack(side=TOP, pady=10)
 
 	crop_down_button = Button(crop_button_frame, text="crop down ^", command=crop_down)	
-	crop_down_button.pack(side=BOTTOM)
+	crop_down_button.pack(side=TOP, pady=10)
 
 	crop_left_button = Button(crop_button_frame, text="crop left ->", command=crop_left)
-	crop_left_button.pack(side=LEFT)
+	crop_left_button.pack(side=TOP, pady=10)
 
 	crop_right_button = Button(crop_button_frame, text="crop right <-", command=crop_top)
-	crop_right_button.pack(side=RIGHT, pady=10)
+	crop_right_button.pack(side=TOP, pady=10)
 
 
 def rotate_image():
@@ -118,6 +115,7 @@ def exit_program():
 
 def main():
 	global img_label
+	global root
 
 	root = Tk()
 	root.title("Image Editor")
