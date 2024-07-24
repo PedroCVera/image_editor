@@ -11,6 +11,7 @@ def load_image():
 		img = Image.open(file_path)
 		display_image(img)
 
+
 def display_image(img):
 	img_tk = ImageTk.PhotoImage(img)
 	img_label.config(image=img_tk)
