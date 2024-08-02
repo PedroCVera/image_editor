@@ -145,9 +145,8 @@ def AddTextMenu():
 def ChangeFont():
 	global font_path
 	font_path = filedialog.askopenfilename()
-	if not CheckFont(font_path):
-		font_path = "/msfonts/Arialbd.TTF"
-	font_path_var.set(font_path)  # update the font path
+	if CheckFont(font_path):
+		font_path_var.set(font_path)  # update the font path
 
 def AddText():
 	global img
